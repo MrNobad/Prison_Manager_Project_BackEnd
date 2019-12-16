@@ -1,16 +1,35 @@
 package com.codeclan.example.Prison_Manager_Project_BackEnd.models.structures;
 
 import com.codeclan.example.Prison_Manager_Project_BackEnd.models.people.Prisoner;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
+import javax.persistence.*;
 import java.sql.Array;
 import java.util.ArrayList;
 
-public class Cell extends Building {
+@Entity
+@Table(name = "cells")
+public class Cell extends Room {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "cell", fetch = FetchType.LAZY)
     private ArrayList<Prisoner> prisonersInCell;
 
     public Cell(){
         this.prisonersInCell = new ArrayList();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public ArrayList<Prisoner> getPrisonersInCell() {

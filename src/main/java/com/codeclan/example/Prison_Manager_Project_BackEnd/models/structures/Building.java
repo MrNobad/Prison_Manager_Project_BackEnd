@@ -4,13 +4,18 @@ import java.util.ArrayList;
 
 public abstract class Building {
 
-    private ArrayList<ArrayList<Cell>> cellBlock;
+    private ArrayList<Room> rooms;
 
     public Building(){
-        this.cellBlock = new ArrayList<>();
+        this.rooms = new ArrayList<>();
     }
 
-    public ArrayList<ArrayList<Cell>> getCellBlock() {
-        return cellBlock;
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
     }
 }
