@@ -1,13 +1,13 @@
 package com.codeclan.example.Prison_Manager_Project_BackEnd.components;
 
 
-import com.codeclan.example.Prison_Manager_Project_BackEnd.models.people.Guard;
+
 import com.codeclan.example.Prison_Manager_Project_BackEnd.models.people.Prisoner;
 import com.codeclan.example.Prison_Manager_Project_BackEnd.models.structures.Cell;
-import com.codeclan.example.Prison_Manager_Project_BackEnd.models.structures.Room;
-import com.codeclan.example.Prison_Manager_Project_BackEnd.repository.Cell.CellRepository;
-import com.codeclan.example.Prison_Manager_Project_BackEnd.repository.guard.GuardRepository;
-import com.codeclan.example.Prison_Manager_Project_BackEnd.repository.prisoner.PrisonerRepository;
+import com.codeclan.example.Prison_Manager_Project_BackEnd.models.structures.Prison;
+import com.codeclan.example.Prison_Manager_Project_BackEnd.repositories.cell.CellRepository;
+import com.codeclan.example.Prison_Manager_Project_BackEnd.repositories.prison.PrisonRepository;
+import com.codeclan.example.Prison_Manager_Project_BackEnd.repositories.prisoner.PrisonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Component
@@ -29,47 +28,64 @@ public class DataLoader implements ApplicationRunner {
     CellRepository cellRepository;
 
     @Autowired
-    GuardRepository guardRepository;
+    PrisonRepository prisonRepository;
 
-    public DataLoader() {
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
 
-    }
-
-    public void run(ApplicationArguments args) {
-        DateFormat sfd = new SimpleDateFormat("dd-MM-yy");
-        String newDate = "24-07-2018";
-        Date date = null;
-        try {
-            date = sfd.parse(newDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Prison codeClan = new Prison();
+        prisonRepository.save(codeClan);
 
         Cell cell1 = new Cell();
-        cellRepository.save((cell1));
-
+        cellRepository.save(cell1);
 
         Cell cell2 = new Cell();
-        cellRepository.save((cell2));
-
+        cellRepository.save(cell2);
 
         Cell cell3 = new Cell();
-        cellRepository.save((cell3));
-
+        cellRepository.save(cell3);
 
         Cell cell4 = new Cell();
-        cellRepository.save((cell4));
+        cellRepository.save(cell4);
 
-        Prisoner bob = new Prisoner("Bob", 12, "Crips", 10, cell1);
-        prisonerRepository.save(bob);
+        Prisoner prisoner1 = new Prisoner("Freezer", 1, "Horde");
+        prisonerRepository.save(prisoner1);
 
-        Guard vince = new Guard("Vince");
-        vince.addCellToAllocatedCells(cell1);
-        vince.addCellToAllocatedCells(cell2);
-        guardRepository.save(vince);
+        Prisoner prisoner2 = new Prisoner("Charlie", 1, "Horde");
+        prisonerRepository.save(prisoner2);
+
+        Prisoner prisoner3 = new Prisoner("Rossie", 1, "Alliance");
+        prisonerRepository.save(prisoner3);
+
+        Prisoner prisoner4 = new Prisoner("Lewis", 10, "Alliance");
+        prisonerRepository.save(prisoner4);
+
+        Prisoner prisoner5 = new Prisoner("Louis", 3, "Alliance");
+        prisonerRepository.save(prisoner5);
+
+        Prisoner prisoner6 = new Prisoner("Stevie", 7, "Horde");
+        prisonerRepository.save(prisoner6);
+
+        Prisoner prisoner7 = new Prisoner("Zsolt", 2, null);
+        prisonerRepository.save(prisoner7);
 
 
     }
+
+
+
+//    public void run(ApplicationArguments args) {
+//        DateFormat sfd = new SimpleDateFormat("dd-MM-yy");
+//        String newDate = "24-07-2018";
+//        Date date = null;
+//        try {
+//            date = sfd.parse(newDate);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
 
 
