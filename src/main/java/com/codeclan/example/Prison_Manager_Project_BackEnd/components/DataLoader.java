@@ -33,40 +33,40 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Prison codeClan = new Prison();
+        Prison codeClan = new Prison("codeClan");
         prisonRepository.save(codeClan);
 
-        Cell cell1 = new Cell();
+        Cell cell1 = new Cell(codeClan);
         cellRepository.save(cell1);
 
-        Cell cell2 = new Cell();
+        Cell cell2 = new Cell(codeClan);
         cellRepository.save(cell2);
 
-        Cell cell3 = new Cell();
+        Cell cell3 = new Cell(codeClan);
         cellRepository.save(cell3);
 
-        Cell cell4 = new Cell();
+        Cell cell4 = new Cell(codeClan);
         cellRepository.save(cell4);
 
-        Prisoner prisoner1 = new Prisoner("Freezer", 1, "Horde");
+        Prisoner prisoner1 = new Prisoner("Freezer", 1, "Horde", cell1);
         prisonerRepository.save(prisoner1);
 
-        Prisoner prisoner2 = new Prisoner("Charlie", 1, "Horde");
+        Prisoner prisoner2 = new Prisoner("Charlie", 1, "Horde", cell1);
         prisonerRepository.save(prisoner2);
 
-        Prisoner prisoner3 = new Prisoner("Rossie", 1, "Alliance");
+        Prisoner prisoner3 = new Prisoner("Rossie", 1, "Alliance", cell2);
         prisonerRepository.save(prisoner3);
 
-        Prisoner prisoner4 = new Prisoner("Lewis", 10, "Alliance");
+        Prisoner prisoner4 = new Prisoner("Lewis", 10, "Alliance", cell2);
         prisonerRepository.save(prisoner4);
 
-        Prisoner prisoner5 = new Prisoner("Louis", 3, "Alliance");
+        Prisoner prisoner5 = new Prisoner("Louis", 3, "Alliance" , cell3);
         prisonerRepository.save(prisoner5);
 
-        Prisoner prisoner6 = new Prisoner("Stevie", 7, "Horde");
+        Prisoner prisoner6 = new Prisoner("Stevie", 7, "Horde", cell4);
         prisonerRepository.save(prisoner6);
 
-        Prisoner prisoner7 = new Prisoner("Zsolt", 2, null);
+        Prisoner prisoner7 = new Prisoner("Zsolt", 2, "", cell4);
         prisonerRepository.save(prisoner7);
 
 
