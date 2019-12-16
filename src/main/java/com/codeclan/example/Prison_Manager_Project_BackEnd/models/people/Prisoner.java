@@ -16,7 +16,7 @@ public class Prisoner extends Person implements Serializable  {
     private String name;
 
 
-    @Column(name = "sentenceLeft")
+    @Column(name = "sentenceLeft") 
     private int sentenceLeft;
 
     @Column(name = "gang")
