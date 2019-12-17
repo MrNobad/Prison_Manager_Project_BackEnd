@@ -26,7 +26,7 @@ public class Prisoner  {
 
     @JsonIgnoreProperties(value = "prisoners")
     @ManyToOne
-    @JoinColumn(name = "cell_id", nullable = false)
+    @JoinColumn(name = "cell_id",  nullable = false)
     private Cell cell;
 
     public Prisoner(String name, int morale, String gang, Cell cell) {
