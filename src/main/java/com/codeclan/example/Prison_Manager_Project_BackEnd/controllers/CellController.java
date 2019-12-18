@@ -20,33 +20,6 @@ public class CellController {
     @Autowired
     CellRepository cellRepository;
 
-    @GetMapping
-    public List<Cell> getAllCells(){
-        return cellRepository.findAll();
-    }
 
-
-    @GetMapping("/{id}")
-    public Optional<Cell> getCell(@PathVariable long id) {
-        return cellRepository.findById(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteCell(@PathVariable long id){
-        cellRepository.deleteById(id);
-    }
-
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public void addCell(@Valid @RequestBody Cell cell){
-        cellRepository.save(cell);
-
-    }
-
-
-    @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-    public void updateCell(@Valid @RequestBody Cell cell){
-        cellRepository.save(cell);
-
-    }
 
 }

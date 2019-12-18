@@ -79,6 +79,11 @@ public class Prisoner  {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
+
+    public void feedPrisoner(){
+        this.morale = 10;
+
+    }
 }
 
 

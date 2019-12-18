@@ -19,35 +19,5 @@ public class PrisonerController {
     @Autowired
     PrisonerRepository prisonerRepository;
 
-    @GetMapping
-    public List<Prisoner> getAllPrisoners(){
-        return prisonerRepository.findAll();
-    }
-
-
-    @GetMapping("/{id}")
-    public Optional<Prisoner> getPrisoner(@PathVariable long id) {
-        return prisonerRepository.findById(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePrisoner(@PathVariable long id){
-        prisonerRepository.deleteById(id);
-    }
-
-    @PostMapping( consumes = "application/json", produces = "application/json")
-    public void addPrisoner(@Valid @RequestBody Prisoner prisoner){
-             prisonerRepository.save(prisoner);
-
-    }
-
-    @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-    public void updatePrisoner(@Valid @RequestBody Prisoner prisoner){
-        prisonerRepository.save(prisoner);
-
-    }
-
-
-
 
 }

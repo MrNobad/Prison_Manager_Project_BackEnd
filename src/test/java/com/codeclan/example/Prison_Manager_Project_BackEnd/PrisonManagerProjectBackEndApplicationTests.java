@@ -38,8 +38,10 @@ class PrisonManagerProjectBackEndApplicationTests {
 		Cell cell1 = new Cell(codeClan);
 		cellRepository.save(cell1);
 
-		Prisoner steve = new Prisoner("Steve2", 10, "Alliance", cell1);
+		Prisoner steve = new Prisoner("Steve2", 5, "Alliance", cell1);
 		prisonerRepository.save(steve);
+
+
 
 	}
 
