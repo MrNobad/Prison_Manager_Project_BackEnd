@@ -19,5 +19,10 @@ public class PrisonerController {
     @Autowired
     PrisonerRepository prisonerRepository;
 
+    @PostMapping( consumes = "application/json", produces = "application/json")
+    public void addPrisoner(@Valid @RequestBody Prisoner prisoner){
+        prisonerRepository.save(prisoner);
+    }
+
 
 }
